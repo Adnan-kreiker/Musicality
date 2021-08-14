@@ -1,14 +1,14 @@
 <template>
 <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition
- duration-300 hover:bg-gray-50 example " :id="`song-id-${song.docID}`"
+ duration-300 song-item" :id="`song-id-${song.docID}`"
  :class="`song-id-${song.docID}`">
   <div>
     <router-link :to="{ name: 'Song', params: { id: song.docID }, hash: '#musicHeader'}"
       v-slot="{ navigate }"
-      class="font-bold block text-gray-600 composition-name">
+      class="font-bold block text-white composition-name">
    <span @click="navigate"> {{ song.modified_name }}</span>
     </router-link>
-    <span class="text-gray-500 text-sm">
+    <span class=" text-gray-700 text-sm">
       {{ song.display_name }}
     </span>
   </div>
@@ -32,6 +32,11 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+.song-item:hover {
+  background: #353535;
+}
+li {
+  border-radius: 30px;
+}
 </style>

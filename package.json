@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 5000",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:update": "vue-cli-service test:unit -u",

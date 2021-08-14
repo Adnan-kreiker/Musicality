@@ -1,6 +1,6 @@
 <template>
      <!-- Header -->
-  <header id="header" class="bg-gray-700">
+  <header id="header">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
       <router-link :to="{name: 'Home'}" class="text-white font-bold uppercase text-2xl mr-4"
@@ -29,7 +29,7 @@
           </template>
         </ul>
           <ul class="flex flex-row mt-1 ml-auto">
-            <select class="px-2 text-white bg-gray-700" @change="switchSelectedLanguage($event)">
+            <select class="px-2 text-white lang-bar" @change="switchSelectedLanguage($event)">
               <option value="en">English</option>
               <option value="fr">Français</option>
               <option value="Ar">العربية</option>
@@ -80,6 +80,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#header, .lang-bar {
+  background: black;
+}
 
 </style>

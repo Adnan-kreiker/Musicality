@@ -11,11 +11,13 @@
   <app-player />
 
   <auth-modal />
+  <app-footer />
 </template>
 <script>
 import AppHeader from './components/Header.vue';
 import AuthModal from './components/Auth.vue';
 import AppPlayer from './components/Player.vue';
+import AppFooter from './components/Footer.vue';
 
 export default {
   name: 'App',
@@ -23,6 +25,8 @@ export default {
     AppHeader,
     AuthModal,
     AppPlayer,
+    AppFooter,
+
   },
   created() {
     this.$store.dispatch('init_login');

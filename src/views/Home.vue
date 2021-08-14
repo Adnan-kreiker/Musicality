@@ -1,45 +1,47 @@
 <template>
-<main>
-  <!-- Introduction -->
-  <section class="mb-8 py-20 text-white text-center relative">
-    <div class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-      style="background-image: url(assets/img/header.png)"></div>
-    <div class="container mx-auto">
-      <div class="text-white main-header-content">
-        <h1 class="font-bold text-5xl mb-5">{{ $t('home.listen') }}</h1>
-        <p class="w-full md:w-8/12 mx-auto">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus et dolor mollis, congue augue non, venenatis elit.
-          Nunc justo eros, suscipit ac aliquet imperdiet, venenatis et
-          sapien. Duis sed magna pulvinar, fringilla lorem eget,
-          ullamcorper urna.
-        </p>
+  <main>
+    <!-- Introduction -->
+    <section class=" h-screen"
+    style="background: black">
+    <div class=" flex">
+        <div class="text-white main-text flex-auto">
+          <p class="  text-7xl font-bold ml-3 mb-5">{{ $t('home.listen') }}</p>
+          <p class=" text-lg md:w-8/12 ml-3">{{ $t('home.description')}}
+          </p>
+        </div>
+      <div class=" flex-none">
+        <img class="main-pic" src="assets/img/phone.png" alt="">
       </div>
-    </div>
 
-    <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full"
-      src="assets/img/introduction-music.png" />
-  </section>
-  <!-- Main Content -->
-  <section class="container mx-auto">
-    <div class="bg-white rounded border border-gray-200 relative flex flex-col">
-      <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
-       v-icon-secondary="{ icon: 'headphones-alt', right: true}">
-        <span class="card-title">Songs</span>
-      </div>
-      <!-- Playlist -->
-      <ol id="playlist">
-        <app-song-item v-for="song in songs" :key="song.docID"
-         :song="song" />
-      </ol>
-      <!-- .. end Playlist -->
     </div>
-  </section>
-</main>
+    </section>
+    <!-- Main Content -->
+    <section class="">
+      <div class=" songs-div  relative text-white flex flex-col">
+        <div
+          class="px-6 pt-6 pb-5 font-bold text-2xl headset-icon"
+          v-icon-secondary="{ icon: 'headphones-alt', right: true}"
+        >
+          <span class="card-title">Songs</span>
+        </div>
+        <!-- Playlist -->
+        <ol id="playlist">
+          <app-song-item
+            v-for="song in songs"
+            :key="song.docID"
+            :song="song"
+          />
+        </ol>
+        <!-- .. end Playlist -->
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { songsCollection } from '@/includes/firebase';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import AppSongItem from '@/components/SongItem.vue';
 import IconSecondary from '../directives/icon-secondary';
 
@@ -107,6 +109,29 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
+.main-pic {
+  height: 500px;
+  padding-right: 40px;
+
+}
+.main-text{
+  padding-left: 40px;
+  padding-top: 80px;
+  font-size: 1rem;
+}
+.songs-div {
+  background: #161616;
+}
+#playlist{
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.card-title {
+  color: #20d862 !important;
+}
+.headset-icon {
+  margin-right: 40px !important;
+}
 </style>

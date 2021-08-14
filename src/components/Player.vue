@@ -1,6 +1,7 @@
 <template>
     <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-white p-5 pb-4 text-left align-top w-full h-16">
+  <div v-if="showPlayer" class="fixed bottom-0 left-0
+   bg-white p-5 pb-4 text-left align-top w-full h-16">
     <div class="relative">
       <!-- Play/Pause Button -->
       <div class="float-left w-7 h-7 leading-3">
@@ -43,6 +44,7 @@
 import { mapActions, mapGetters, mapState } from 'vuex';
 
 export default {
+  showPlayer: false,
   name: 'Player',
   computed: {
     ...mapGetters(['playing']),
