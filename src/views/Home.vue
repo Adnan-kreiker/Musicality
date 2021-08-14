@@ -1,7 +1,7 @@
 <template>
   <main>
     <!-- Introduction -->
-    <section class=" h-screen"
+    <section id="main-section" class=" h-screen"
     style="background: black">
     <div class=" flex">
         <div class="text-white main-text flex-auto">
@@ -133,5 +133,8 @@ export default {
 }
 .headset-icon {
   margin-right: 40px !important;
+}
+#main-section {
+  background-image: linear-gradient(to right, #00b09b, #96c93d) !important;
 }
 </style>

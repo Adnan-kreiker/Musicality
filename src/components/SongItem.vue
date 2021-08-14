@@ -8,7 +8,7 @@
       class="font-bold block text-white composition-name">
    <span @click="navigate"> {{ song.modified_name }}</span>
     </router-link>
-    <span class=" text-gray-700 text-sm">
+    <span class=" text-gray-500 text-sm">
       {{ song.display_name }}
     </span>
   </div>

@@ -1,10 +1,7 @@
 <template>
-<main>
+<main class=" min-h-screen">
   <!-- Music Header -->
-  <section id="musicHeader" class="w-full mb-8 py-14 text-center text-white relative">
-    <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg"
-      style="background-image: url(/assets/img/song-header.png)">
-    </div>
+  <section id="musicHeader" class=" mb-8 py-14 text-center text-white relative">
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
       <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
@@ -21,13 +18,21 @@
   </section>
   <!-- Form -->
   <section class="container mx-auto mt-6" id="comments">
-    <div class="bg-white rounded border border-gray-200 relative flex flex-col">
-      <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+    <div class=" comments-section rounded relative flex flex-col">
+      <div class="px-6 pt-6 pb-5 font-bold border-b border-green-400">
         <!-- Comment Count -->
         <span class="card-title">
           {{ $tc('song.comment_count', song.comment_count, {
            count: song.comment_count
              })}}</span>
+                     <select
+          class=" mt-4 py-1.5 inline text-white comments-section border border-green-500
+            bg-gray-700
+          " v-model="sort"
+          >
+          <option value="1" >Latest</option>
+          <option value="2">Oldest</option>
+        </select>
         <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
       </div>
       <div class="p-6">
@@ -36,7 +41,7 @@
          {{ comment_alert_message }}</div>
         <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
           <vee-field as="textarea" name="comment"
-            class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
+            class="block w-full py-1.5 px-3 text-gray-800 transition
               duration-500 focus:outline-none focus:border-black rounded mb-4"
             placeholder="Your comment here..."></vee-field>
           <ErrorMessage class="text-red-600" name="comment" />
@@ -44,19 +49,20 @@
            class="py-1.5 px-3 rounded text-white bg-green-600">Submit</button>
         </vee-form>
         <!-- Comment Sorting -->
-        <select
-          class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition
-          duration-500 focus:outline-none focus:border-black rounded" v-model="sort"
+        <!-- <select
+          class="block mt-4 py-1.5 px-3 text-white comments-section border border-green-500
+            bg-gray-700
+          " v-model="sort"
           >
           <option value="1" >Latest</option>
           <option value="2">Oldest</option>
-        </select>
+        </select> -->
       </div>
     </div>
   </section>
   <!-- Comments -->
   <ul class="container mx-auto">
-    <li class="p-6 bg-gray-50 border border-gray-200" v-for="comment in sortedComments"
+    <li class=" p-3  mt-3 single-comment" v-for="comment in sortedComments"
      :key="comment.docID">
       <!-- Comment Author -->
       <div class="mb-5">
@@ -184,6 +190,37 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+main {
+  color: white;
+}
+.comments-section {
+  background-color: #161616;
+}
+.single-comment {
+  background: #161616 !important;
+}
+.card-title {
+   padding-right: 20px;
+}
+#musicHeader {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #20d862) ;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    margin: 0 20px;
+    border-radius: 20px;
+    min-height: 250px;
+}
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 </style>

@@ -5,7 +5,7 @@
       <!-- App Name -->
       <router-link :to="{name: 'Home'}" class="text-white font-bold uppercase text-2xl mr-4"
       exact-active-class="no-change"
-      >Music
+      >Musicality
       </router-link>
 
       <div class="flex flex-grow items-center">
@@ -29,9 +29,10 @@
           </template>
         </ul>
           <ul class="flex flex-row mt-1 ml-auto">
-            <select class="px-2 text-white lang-bar" @change="switchSelectedLanguage($event)">
-              <option value="en">English</option>
-              <option value="fr">Français</option>
+            <select class="px-2 text-white lang-bar :hover:text-green-500"
+             @change="switchSelectedLanguage($event)">
+              <option class=" hover:text-green-500" value="en">English</option>
+              <option class=" hover:text-green-500" value="fr">Français</option>
               <option value="Ar">العربية</option>
             </select>
           </ul>
@@ -83,6 +84,9 @@ export default {
 <style scoped>
 #header, .lang-bar {
   background: black;
+}
+.lang-bar:hover{
+  cursor: pointer;
 }
 
 </style>
