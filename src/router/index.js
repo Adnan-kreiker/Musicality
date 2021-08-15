@@ -44,6 +44,11 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-500',
+  // eslint-disable-next-line no-unused-vars
+  scrollBehavior(to, from, savedPosition) {
+    // eslint-disable-next-line semi
+    return { top: 0 }
+  },
 });
 
 router.beforeEach((to, from, next) => {

@@ -1,7 +1,7 @@
 <template>
- <div class="border border-gray-200 p-3 mb-4 rounded">
+ <div class="border border-green-400 p-3 mb-4 rounded">
   <div v-show="!showForm">
-    <h4 class="inline-block text-lg font-bold"> {{ song.modified_name }}</h4>
+    <h4 class="inline-block text-md"> {{ song.modified_name }}</h4>
     <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-500 float-right"
       @click.prevent="deleteSong">
       <i class="far fa-trash-alt"></i>

@@ -3,7 +3,7 @@
  duration-300 song-item" :id="`song-id-${song.docID}`"
  :class="`song-id-${song.docID}`">
   <div>
-    <router-link :to="{ name: 'Song', params: { id: song.docID }, hash: '#musicHeader'}"
+    <router-link :to="{ name: 'Song', params: { id: song.docID }, hash: '#player'}"
       v-slot="{ navigate }"
       class="font-bold block text-white composition-name">
    <span @click="navigate"> {{ song.modified_name }}</span>

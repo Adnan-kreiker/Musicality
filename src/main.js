@@ -12,6 +12,7 @@ import './registerServiceWorker';
 import GlobalComponents from './includes/_globals';
 import ProgressBar from './includes/progress-bar';
 import 'nprogress/nprogress.css';
+import 'animate.css';
 
 ProgressBar(router);
 

@@ -31,9 +31,8 @@
           <ul class="flex flex-row mt-1 ml-auto">
             <select class="px-2 text-white lang-bar :hover:text-green-500"
              @change="switchSelectedLanguage($event)">
-              <option class=" hover:text-green-500" value="en">English</option>
-              <option class=" hover:text-green-500" value="fr">Français</option>
-              <option value="Ar">العربية</option>
+              <option value="en"><span>English</span></option>
+              <option value="fr"><span>Français</span></option>
             </select>
           </ul>
       </div>
@@ -87,6 +86,9 @@ export default {
 }
 .lang-bar:hover{
   cursor: pointer;
+}
+span:hover {
+  color: #20d862 !important;
 }
 
 </style>

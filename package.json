@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 5000",
+    "serve": "vue-cli-service serve --port 5005",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:update": "vue-cli-service test:unit -u",
@@ -14,6 +14,7 @@
   "dependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@vee-validate/rules": "^4.1.17",
+    "animate.css": "^4.1.1",
     "autoprefixer": "^9",
     "core-js": "^3.6.5",
     "firebase": "^8.2.7",

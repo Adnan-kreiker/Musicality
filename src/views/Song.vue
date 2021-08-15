@@ -1,10 +1,10 @@
 <template>
-<main class=" min-h-screen">
+<main id="player" class=" min-h-screen">
   <!-- Music Header -->
   <section id="musicHeader" class=" mb-8 py-14 text-center text-white relative">
-    <div class="container mx-auto flex items-center">
+    <div  class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
-      <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
+      <button type="button" class="z-50 h-24  w-24 text-3xl bg-white text-black rounded-full
         focus:outline-none" id="play-button" @click.prevent="newSong(song)">
         <i class="fas fa-play"></i>
       </button>

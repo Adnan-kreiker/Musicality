@@ -1,11 +1,11 @@
 <template>
 
 <footer class="footer grid gap-2">
-  <div class="footer__addr col-span-4">
+  <div class="footer__addr col-span-2">
     <h1 class="footer__logo">Musicality</h1>
   </div>
 
-  <ul class="footer__nav block col-span-12">
+  <ul class="footer__nav block col-span-10">
     <li class="nav__item">
       <h2 class="nav__title">Media</h2>
 
@@ -65,7 +65,7 @@
     </li>
   </ul>
 
-  <div class="legal col-span-7 text-center">
+  <div class="legal col-span-12 text-center">
     <p>&copy; 2021. All rights reserved.</p>
   </div>
 </footer>
