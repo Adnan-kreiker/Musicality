@@ -116,7 +116,8 @@ export default {
 
 .main-pic {
   height: 500px;
-  padding-right: 40px;
+  padding-right: 80px;
+  padding-top: 40px;
 
 }
 .main-text{

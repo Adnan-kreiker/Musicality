@@ -1,5 +1,5 @@
 <template>
-<div class=" grid grid-cols-2">
+<div class="main-section grid grid-cols-2">
   <div class="about h-screen  text-white">
     <p class=" text-white text-base">What is Musicality?</p> <br>
     <p class=" text-4xl font-bold">Musicality is a music sharing platform
@@ -25,10 +25,10 @@ img{
   margin-left: 100px;
 }
 
-.grid {
+.main-section {
   background: linear-gradient(-45deg, #000000, #15a8a1, #12b362, #010503);
   background-size: 100% 100%;
-  animation: gradient 15s ease infinite;
+   /* animation: gradient 3s ease infinite; */
 
 }
 
