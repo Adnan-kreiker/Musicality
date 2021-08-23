@@ -1,87 +1,100 @@
 <template>
-<main id="player" class=" min-h-screen">
-  <!-- Music Header -->
-  <section id="musicHeader" class=" mb-8 py-14 text-center text-white relative">
-    <div  class="container mx-auto flex items-center">
-      <!-- Play/Pause Button -->
-      <button type="button" class="z-50 h-24  w-24 text-3xl bg-white text-black rounded-full
-        focus:outline-none" id="play-button" @click.prevent="newSong(song)">
-        <i class="fas fa-play"></i>
-      </button>
-      <div class="z-50 text-left ml-8">
-        <!-- Song Info -->
-        <div class="text-3xl font-bold">{{ song.modified_name }}</div>
-        <div>{{ song.genre}}</div>
-        <div class="song-price">{{ $n(1, 'currency') }}</div>
+  <main id="player" class=" min-h-screen">
+    <!-- Music Header -->
+    <section id="musicHeader" class=" mb-8 py-14 text-center text-white relative">
+      <div class="container mx-auto flex items-center">
+        <!-- Play/Pause Button -->
+        <button
+          type="button"
+          class="z-50 h-24  w-24 text-3xl bg-white text-black rounded-full
+        focus:outline-none"
+          id="play-button"
+          @click.prevent="newSong(song)"
+        >
+          <i
+            class="fa text-gray-500 text-xl"
+            :class="{ 'fa-play': !playing, 'fas fa-reply': playing }"
+          ></i>
+          <!-- <i class="fas fa-play"></i> -->
+        </button>
+        <div class="z-50 text-left ml-8">
+          <!-- Song Info -->
+          <div class="text-3xl font-bold">{{ song.modified_name }}</div>
+          <div>{{ song.genre }}</div>
+          <div class="song-price">{{ $n(1, 'currency') }}</div>
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- Form -->
-  <section class="container mx-auto mt-6" id="comments">
-    <div class=" comments-section rounded relative flex flex-col">
-      <div class="px-6 pt-6 pb-5 font-bold border-b border-green-400">
-        <!-- Comment Count -->
-        <span class="card-title">
-          {{ $tc('song.comment_count', song.comment_count, {
-           count: song.comment_count
-             })}}</span>
-                     <select
-          class=" mt-4 py-1.5 inline text-white comments-section border border-green-500
-            bg-gray-700
-          " v-model="sort"
+    </section>
+    <!-- Form -->
+    <section class="container mx-auto mt-6" id="comments">
+      <div class=" comments-section rounded relative flex flex-col">
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-green-400">
+          <!-- Comment Count -->
+          <span class="card-title">
+            {{
+              $tc('song.comment_count', song.comment_count, {
+                count: song.comment_count,
+              })
+            }}</span
           >
-          <option value="1" >Latest</option>
-          <option value="2">Oldest</option>
-        </select>
-        <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
-      </div>
-      <div class="p-6">
-        <div class="text-white text-center font-bold p-4 mb-4"
-         v-if="comment_show_alert" :class="comment_alert_variant">
-         {{ comment_alert_message }}</div>
-        <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
-          <vee-field as="textarea" name="comment"
-            class="block w-full py-1.5 px-3 text-gray-800 transition
+          <select
+            class=" mt-4 py-1.5 inline text-white comments-section border border-green-500
+            bg-gray-700
+          "
+            v-model="sort"
+          >
+            <option value="1"> {{ $t('song.sort1') }}</option>
+            <option value="2">{{ $t('song.sort2') }}</option>
+          </select>
+          <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
+        </div>
+        <div class="p-6">
+          <div
+            class="text-white text-center font-bold p-4 mb-4"
+            v-if="comment_show_alert"
+            :class="comment_alert_variant"
+          >
+            {{ comment_alert_message }}
+          </div>
+          <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
+            <vee-field
+              as="textarea"
+              name="comment"
+              class="block w-full py-1.5 px-3 text-gray-800 transition
               duration-500 focus:outline-none focus:border-black rounded mb-4"
-            placeholder="Your comment here..."></vee-field>
-          <ErrorMessage class="text-red-600" name="comment" />
-          <button :disabled="comment_in_submission" type="submit"
-           class="py-1.5 px-3 rounded text-white bg-green-600">Submit</button>
-        </vee-form>
-        <!-- Comment Sorting -->
-        <!-- <select
-          class="block mt-4 py-1.5 px-3 text-white comments-section border border-green-500
-            bg-gray-700
-          " v-model="sort"
-          >
-          <option value="1" >Latest</option>
-          <option value="2">Oldest</option>
-        </select> -->
+              placeholder="Your comment here..."
+            ></vee-field>
+            <ErrorMessage class="text-red-600 block" name="comment" />
+            <button
+              :disabled="comment_in_submission"
+              type="submit"
+              class="py-1.5 px-3 rounded text-white bg-green-600"
+            >
+              {{ $t('song.button') }}
+            </button>
+          </vee-form>
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- Comments -->
-  <ul class="container mx-auto">
-    <li class=" p-3  mt-3 single-comment" v-for="comment in sortedComments"
-     :key="comment.docID">
-      <!-- Comment Author -->
-      <div class="mb-5">
-        <div class="font-bold">{{ comment.name }}</div>
-        <time>{{ comment.datePosted }}</time>
-      </div>
+    </section>
+    <!-- Comments -->
+    <ul class="container mx-auto">
+      <li class=" p-3  mt-3 single-comment" v-for="comment in sortedComments" :key="comment.docID">
+        <!-- Comment Author -->
+        <div class="mb-5">
+          <div class="font-bold">{{ comment.name }}</div>
+          <time>{{ comment.datePosted }}</time>
+        </div>
 
-      <p>
-        {{ comment.content}}
-      </p>
-    </li>
-  </ul>
-</main>
+        <p>
+          {{ comment.content }}
+        </p>
+      </li>
+    </ul>
+  </main>
 </template>
 <script>
-import {
-  songsCollection, commentsCollection, auth,
-} from '@/includes/firebase';
-import { mapState, mapActions } from 'vuex';
+import { songsCollection, commentsCollection, auth } from '@/includes/firebase';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Song',
@@ -126,7 +139,7 @@ export default {
 
       const comment = {
         content: values.comment,
-        datePosted: new Date().toString(),
+        datePosted: new Date().toLocaleString(),
         sid: this.$route.params.id,
         name: auth.currentUser.displayName,
         uid: auth.currentUser.uid,
@@ -146,9 +159,7 @@ export default {
       resetForm();
     },
     async getComments() {
-      const snapshot = await commentsCollection.where(
-        'sid', '==', this.$route.params.id,
-      ).get();
+      const snapshot = await commentsCollection.where('sid', '==', this.$route.params.id).get();
 
       this.comments = [];
       snapshot.forEach((doc) => [
@@ -163,6 +174,7 @@ export default {
     ...mapState({
       userLoggedIn: (state) => state.auth.userLoggedIn,
     }),
+    ...mapGetters(['playing']),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {
         if (this.sort === '1') {
@@ -201,26 +213,26 @@ main {
   background: #161616 !important;
 }
 .card-title {
-   padding-right: 20px;
+  padding-right: 20px;
 }
 #musicHeader {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #20d862) ;
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    margin: 0 20px;
-    border-radius: 20px;
-    min-height: 250px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #20d862);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  margin: 0 20px;
+  border-radius: 20px;
+  min-height: 250px;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>

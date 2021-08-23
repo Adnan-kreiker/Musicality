@@ -1,16 +1,61 @@
 {
   "home": {
     "description": "Upload your first track and begin your journey. Musicality gives you space to create and connect with people.",
-    "listen": "Listen to Great Music!"
+    "listen": "Listen to Great Music!",
+    "button": "VIEW SONGS",
+    "songs": "Songs",
+    "about": "About",
+    "manage": "Manage",
+    "logout": "Logout",
+    "loginRegister": "Login / Register",
+    "whatIs": "What is Musicality?",
+    "homeDesc": "Musicality is a music sharing platform bringing people together through unique experience and amazing experience"
   },
   "manage": {
-    "my_songs": "My Songs"
+    "my_songs": "My Songs",
+    "back": "go back",
+    "title": "Song title",
+    "drop": "Drop your files here",
+    "upload": "Upload"
   },
   "register": {
     "TOS": "Terms of Service",
     "accept": "I accept Music's {0}"
   },
   "song": {
-    "comment_count": "No Comments | 1 Comment | {count} Comments"
+    "comment_count": "No Comments | 1 Comment | {count} Comments",
+    "sort1": "Latest",
+    "sort2": "Oldest",
+    "button": "Submit",
+    "placeholder": "Add your comment here"
+  },
+  "footer": {
+    "Media": "Media",
+    "Online": "Online",
+    "Print": "Print",
+    "AlternativeAds": "Alternative Ads",
+    "Company": "Company",
+    "WhatIsMusicality": "What is Musicality?",
+    "Partners": "Partners",
+    "Careers": "Careers",
+    "Press": "Press",
+    "Account": "Account",
+    "SignUp": "Sign Up",
+    "RedeemVoucher": "Redeem Voucher",
+    "RedeemGiftcard": "Redeem Giftcard"
+  },
+  "login": {
+    "yourAccount": "Your Account",
+    "login": "Login",
+    "register": "Register",
+    "name": "Name",
+    "namePlaceholder": "Enter Name",
+    "email": "Email",
+    "age": "Age",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "country": "Country",
+    "placeholder1": "Enter your Email",
+    "submit": "Submit"
   }
 }

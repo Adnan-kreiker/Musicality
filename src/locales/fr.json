@@ -1,16 +1,61 @@
 {
   "home": {
-    "description": "Téléchargez votre première piste et commencez votre voyage. La musicalité vous donne un espace pour créer et vous connecter avec les gens.",
-    "listen": "Écoutez de la bonne musique !"
+    "description": "Téléchargez votre première piste et commencez votre voyage.La musicalité vous donne un espace pour créer et vous connecter avec les gens.",
+    "listen": "Écoutez de la bonne musique !",
+    "button": "VOIR LES CHANSONS",
+    "songs": "Chansons",
+    "about": "Quelque",
+    "manage": "Gérer",
+    "logout": "Se déconnecter",
+    "loginRegister": "Connexion / S'inscrire",
+    "homeDesc": "Musicality est une plateforme de partage de musique rassemblant les gens à travers une expérience unique et une expérience incroyable",
+    "whatIs": "Qu'est-ce que la musicalité ?"
   },
   "manage": {
-    "my_songs": "Mes chansons"
+    "my_songs": "Mes chansons",
+    "back": "Retourner",
+    "title": "Titre de la chanson",
+    "drop": "Déposez vos fichiers ici",
+    "upload": "Télécharger"
   },
   "register": {
-    "TOS": "",
-    "accept": ""
+    "TOS": "Conditions d'utilisation",
+    "accept": "J'accepte la musique {0}"
   },
   "song": {
-    "comment_count": ""
+    "comment_count": "Pas de commentaires | 1 commentaire | {count} commentaires",
+    "sort1": "Dernier",
+    "sort2": "Le plus ancien",
+    "button": "Ajoutez votre commentaire ici"
+  },
+  "footer": {
+    "Media": "Meida",
+    "Online": "En ligne",
+    "Print": "Imprimer",
+    "AlternativeAds": "Annonces alternatives",
+    "Company": "Société",
+    "WhatIsMusicality": "Qu'est-ce que la musicalité ?",
+    "Partners": "Les partenaires",
+    "Careers": "Carrières",
+    "Press": "Presse",
+    "Account": "Compte",
+    "SignUp": "S'inscrire",
+    "RedeemVoucher": "Échanger le bon",
+    "RedeemGiftcard": "Échanger la carte-cadeau"
+  },
+  "login": {
+    "yourAccount": "Votre compte",
+    "login": "Connexion",
+    "register": "Enregistrer",
+    "password": "Le mot de passe",
+    "name": "Nom",
+    "namePlaceholder": "Entrez votre nom",
+    "email": "Email",
+    "enterEmail": "Entrez votre email",
+    "age": "Âge",
+    "confirmPassword": "Confirmer le mot de passe",
+    "country": "Pays",
+    "submit": "Soumettre",
+    "placeholder1": "Entrez l'e-mail"
   }
 }

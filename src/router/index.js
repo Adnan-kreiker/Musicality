@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const Home = () => import('@/views/Home.vue');
-const Song = () => import(/* webpackChunkName: "mu" */'@/views/Song.vue');
-const Manage = () => import(/* webpackChunkName: "mu" */'@/views/Manage.vue');
+const Song = () => import(/* webpackChunkName: "mu" */ '@/views/Song.vue');
+const Manage = () => import(/* webpackChunkName: "mu" */ '@/views/Manage.vue');
 const About = () => import('@/views/About.vue');
 const routes = [
   {
@@ -44,10 +44,17 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-500',
-  // eslint-disable-next-line no-unused-vars
   scrollBehavior(to, from, savedPosition) {
-    // eslint-disable-next-line semi
-    return { top: 0 }
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    return { top: 0 };
   },
 });
 

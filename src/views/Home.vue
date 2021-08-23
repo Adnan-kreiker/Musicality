@@ -1,33 +1,39 @@
 <template>
   <main>
     <!-- Introduction -->
-    <section id="main-section" class=" h-screen"
-    style="background: black">
-    <div class=" flex">
-        <div class="text-white main-text flex-auto">
-          <p class="  text-7xl font-bold ml-3 mb-5">{{ $t('home.listen') }}</p>
-          <p class=" text-lg md:w-8/12 ml-3">{{ $t('home.description')}}
-          </p>
+    <section id="main-section" style="background: black">
+      <div class=" grid-cont">
+        <div class="text-white main-text place-self-center">
+          <p class=" main-par font-bold mb-5">{{ $t('home.listen') }}</p>
+          <p class=" txt-desc text-3xl">{{ $t('home.description') }}</p>
+          <router-link :to="{ path: '/', hash: '#songs' }">
+            <button class="animate__animated animate__slideInDown break-words">
+              {{ $t('home.button') }}
+            </button>
+          </router-link>
         </div>
-      <div class=" flex-none">
-        <img class="main-pic" src="assets/img/phone.png" alt="">
+        <img
+          class="main-pic block place-self-center row-span-1"
+          src="assets/img/phone.png"
+          alt=""
+        />
       </div>
-    </div>
-     <a href="#songs">
-           <button class="animate__animated animate__slideInDown">VIEW SONGS</button>
-     </a>
     </section>
     <!-- Main Content -->
     <section id="songs">
       <div class=" songs-div  relative text-white flex flex-col">
-        <div
-          class="px-6 pt-6 pb-5 font-bold text-2xl headset-icon"
-          v-icon-secondary="{ icon: 'headphones-alt', right: true}"
-        >
-          <span  class="card-title">Songs</span>
+        <div class=" song-icon">
+          <span class="card-title text-2xl">{{ $t('home.songs') }}</span>
+          <span
+            class="px-6 pt-6 pb-5 font-bold text-2xl inline headset-icon"
+            v-icon-secondary="{ icon: 'headphones-alt', right: true }"
+          ></span>
         </div>
+
+        <!-- <p  class="card-title">{{ $t('home.songs')}}</p> -->
+        <!-- </span> -->
         <!-- Playlist -->
-        <ol id="playlist" >
+        <ol id="playlist">
           <app-song-item
             v-for="song in songs"
             :key="song.docID"
@@ -59,7 +65,7 @@ export default {
   data() {
     return {
       songs: [],
-      maxPerPage: 7,
+      maxPerPage: 10,
       pendingRequest: false,
     };
   },
@@ -113,22 +119,30 @@ export default {
 </script>
 
 <style scoped>
-
+.grid-cont {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 55% 40%;
+}
 .main-pic {
   height: 500px;
-  padding-right: 80px;
-  padding-top: 40px;
-
+  /* height: 30vw; */
+  /* padding-right: 80px; */
+  /* padding-top: 40px; */
 }
-.main-text{
-  padding-left: 40px;
-  padding-top: 80px;
-  font-size: 1rem;
+.main-text {
+  margin-top: 40px;
+  padding-left: 50px;
+  font-size: 4rem;
+  align-self: stretch !important;
+}
+.txt-desc {
+  margin-bottom: 15px;
 }
 .songs-div {
   background: #161616;
 }
-#playlist{
+#playlist {
   padding-left: 40px;
   padding-right: 40px;
 }
@@ -140,11 +154,14 @@ export default {
 }
 #main-section {
   background-image: linear-gradient(to right, #00b09b, #96c93d) !important;
+  min-height: 88vh;
 }
-button, button::after {
-  width: 380px;
-  height: 86px;
-  font-size: 36px;
+button,
+button::after {
+  width: 25vw;
+  /* margin-left: 10px; */
+  height: 6vw;
+  font-size: clamp(1rem, 2vw, 2rem);
   background: linear-gradient(45deg, transparent 5%, #6b2b4a 5%);
   border: 0;
   color: #fff;
@@ -152,9 +169,6 @@ button, button::after {
   line-height: 88px;
   box-shadow: 6px 0px 0px #6b2b4a;
   outline: transparent;
-  position: relative;
-  bottom: 20%;
-  left: 10%;
 }
 
 button::after {
@@ -172,8 +186,8 @@ button::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
-  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+  text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
   clip-path: var(--slice-0);
 }
 
@@ -226,6 +240,76 @@ button:hover::after {
   100% {
     clip-path: var(--slice-1);
     transform: translate(0);
+  }
+}
+.song-icon {
+  margin: 20px 40px !important;
+}
+@media screen and (max-width: 870px) {
+  button,
+  button::after {
+  }
+}
+@media screen and (max-width: 811px) {
+  .main-text {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-pic {
+    display: none;
+  }
+  .grid-cont {
+    grid-template-columns: 1fr;
+  }
+  button,
+  button::after {
+    width: 30vw !important;
+    height: 8vw !important;
+    font-size: 0.8rem;
+    line-height: 22px;
+  }
+  .main-text {
+    font-size: 3.5rem;
+    margin-right: 40px;
+    margin-top: 60px;
+  }
+  .txt-desc {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  button {
+    margin-left: 13px !important;
+  }
+}
+@media screen and (max-width: 589px) {
+  .main-text {
+    font-size: 2.5rem;
+  }
+  .txt-desc {
+    font-size: 1.5rem;
+  }
+  button {
+    margin-bottom: 30px;
+    font-size: 0.8rem;
+    width: 40vw !important;
+    height: 6vh !important;
+  }
+}
+@media screen and (max-width: 432px) {
+  .main-text {
+    font-size: 1.6rem !important;
+    margin-right: 40px;
+  }
+  .txt-desc {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  button {
+    margin-bottom: 30px;
+    font-size: 0.7rem;
+    width: 40vw !important;
+    height: 6vh !important;
   }
 }
 </style>
