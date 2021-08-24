@@ -41,7 +41,7 @@
             class="  animate__animated animate__slideInLeft animate__slow"
           />
         </ol>
-        <!-- .. end Playlist -->
+        <!-- .. end of Playlist -->
       </div>
     </section>
   </main>
@@ -165,8 +165,8 @@ button::after {
   background: linear-gradient(45deg, transparent 5%, #6b2b4a 5%);
   border: 0;
   color: #fff;
+  padding-bottom: 0px;
   letter-spacing: 3px;
-  line-height: 88px;
   box-shadow: 6px 0px 0px #6b2b4a;
   outline: transparent;
 }

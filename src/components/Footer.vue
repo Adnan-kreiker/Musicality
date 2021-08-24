@@ -1,68 +1,68 @@
 <template>
-  <footer class="footer grid gap-2">
-    <div class="footer__addr col-span-2">
+  <footer class="footer grid grid-cols-3 content-center justify-center gap-2">
+    <div class="footer__addr col-span-3">
       <h1 class="footer__logo">Musicality</h1>
     </div>
 
-    <ul class="footer__nav block col-span-10">
-      <li class="nav__item">
-        <h2 class="nav__title">{{ $t('footer.Media') }}</h2>
+    <!-- <ul class="footer__nav block "> -->
+    <li class="nav__item">
+      <h2 class="nav__title">{{ $t('footer.Media') }}</h2>
 
-        <ul class="nav__ul">
-          <li>
-            <a href="#">{{ $t('footer.Online') }}</a>
-          </li>
+      <ul class="nav__ul">
+        <li>
+          <a href="#">{{ $t('footer.Online') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.Print') }}</a>
-          </li>
+        <li>
+          <a href="#">{{ $t('footer.Print') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.AlternativeAds') }}</a>
-          </li>
-        </ul>
-      </li>
+        <li>
+          <a href="#">{{ $t('footer.AlternativeAds') }}</a>
+        </li>
+      </ul>
+    </li>
 
-      <li class="nav__item nav__item--extra">
-        <h2 class="nav__title">{{ $t('footer.Company') }}</h2>
+    <li class="nav__item nav__item--extra">
+      <h2 class="nav__title">{{ $t('footer.Company') }}</h2>
 
-        <ul class="nav__ul">
-          <li>
-            <a href="#">{{ $t('footer.WhatIsMusicality') }}</a>
-          </li>
+      <ul class="nav__ul">
+        <li>
+          <a href="#">{{ $t('footer.WhatIsMusicality') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.Partners') }}</a>
-          </li>
+        <li>
+          <a href="#">{{ $t('footer.Partners') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.Careers') }}</a>
-          </li>
+        <li>
+          <a href="#">{{ $t('footer.Careers') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.Press') }}</a>
-          </li>
-        </ul>
-      </li>
+        <li>
+          <a href="#">{{ $t('footer.Press') }}</a>
+        </li>
+      </ul>
+    </li>
 
-      <li class="nav__item">
-        <h2 class="nav__title">{{ $t('footer.Account') }}</h2>
+    <li class="nav__item">
+      <h2 class="nav__title">{{ $t('footer.Account') }}</h2>
 
-        <ul class="nav__ul">
-          <li>
-            <a href="#">{{ $t('footer.SignUp') }}</a>
-          </li>
+      <ul class="nav__ul">
+        <li>
+          <a href="#">{{ $t('footer.SignUp') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.RedeemVoucher') }}</a>
-          </li>
+        <li>
+          <a href="#">{{ $t('footer.RedeemVoucher') }}</a>
+        </li>
 
-          <li>
-            <a href="#">{{ $t('footer.RedeemGiftcard') }}</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+        <li>
+          <a href="#">{{ $t('footer.RedeemGiftcard') }}</a>
+        </li>
+      </ul>
+    </li>
+    <!-- </ul> -->
   </footer>
 </template>
 
@@ -80,9 +80,10 @@ export default {};
 .footer {
   /* display: flex;
   flex-flow: row wrap; */
-  padding: 30px 30px 20px 30px;
+  padding: 30px 30px 80px 30px;
   color: white;
   background-color: black;
+  grid-template-rows: 1fr 3fr;
 }
 
 /* .footer > * {
@@ -92,7 +93,6 @@ export default {};
 .footer__logo {
   font-weight: 500;
   font-size: 2rem;
-  margin-left: 20px;
 }
 
 .nav__title {
@@ -100,7 +100,7 @@ export default {};
   font-size: 15px;
 }
 
-.footer ul {
+li {
   list-style: none;
   padding-left: 0;
 }

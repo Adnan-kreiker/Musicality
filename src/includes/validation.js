@@ -1,9 +1,20 @@
 import {
-  Form as VeeForm, Field as VeeField, defineRule, ErrorMessage, configure,
+  Form as VeeForm,
+  Field as VeeField,
+  defineRule,
+  ErrorMessage,
+  configure,
 } from 'vee-validate';
 import {
-  required, min, max, alpha_spaces as alphaSpaces, email, min_value as minVal,
-  not_one_of as excluded, max_value as maxVal, confirmed,
+  required,
+  min,
+  max,
+  alpha_spaces as alphaSpaces,
+  email,
+  min_value as minVal,
+  not_one_of as excluded,
+  max_value as maxVal,
+  confirmed,
 } from '@vee-validate/rules';
 
 export default {

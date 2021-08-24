@@ -19,6 +19,13 @@
               {{ $t('home.about') }}</router-link
             >
           </li>
+          <!-- <div class="lang">
+            <li>
+              <a class=" text-white self-end" href="#" @click.prevent="changeLocale">
+                {{ currentLocale }}
+              </a>
+            </li>
+          </div> -->
           <li v-if="!userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
               {{ $t('home.loginRegister') }}</a
@@ -35,13 +42,6 @@
                 $t('home.logout')
               }}</a>
             </li>
-            <div class="lang hidden">
-              <li>
-                <a class=" text-white self-end" href="#" @click.prevent="changeLocale">
-                  {{ currentLocale }}
-                </a>
-              </li>
-            </div>
           </template>
         </ul>
         <ul class="flex flex-row mt-1 ml-auto">
@@ -52,7 +52,7 @@
           </li>
         </ul>
       </div>
-      <div id="mySidenav" :class="[{ wedth: show }, 'hiden']" class="sidenav">
+      <div id="mySidenav" :class="[{ shown: show }, 'hide']" class="sidenav">
         <!-- <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a> -->
         <ul>
           <!-- Navigation Links -->
@@ -77,14 +77,12 @@
                 $t('home.logout')
               }}</a>
             </li>
-            <div class="lang">
-              <li>
-                <a class=" text-white self-end" href="#" @click.prevent="changeLocale">
-                  {{ currentLocale }}
-                </a>
-              </li>
-            </div>
           </template>
+          <li>
+            <a class=" text-white" href="#" @click.prevent="changeLocale">
+              {{ currentLocale }}
+            </a>
+          </li>
         </ul>
       </div>
       <span class="burger hidden" style="font-size:30px;cursor:pointer" @click="openNav()"
@@ -140,10 +138,10 @@ export default {
 </script>
 
 <style scoped>
-.hiden {
+.hide {
   width: 0px;
 }
-.wedth {
+.shown {
   width: 250px;
 }
 .burger {
