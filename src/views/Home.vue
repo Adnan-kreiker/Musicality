@@ -15,7 +15,7 @@
           </router-link>
         </div>
         <img
-          class="  place-self-center h-52 md:h-96 lg:h-96 xl:h-96 3x:h-96 row-span-1"
+          class="  place-self-center h-52 md:h-96 lg:h-[500px] xl:h-[500px] 2xl:h-[500px] row-span-1"
           src="assets/img/phone.png"
           alt=""
         />
@@ -124,12 +124,7 @@ export default {
   justify-content: center;
   grid-template-columns: 55% 40%;
 }
-.main-pic {
-  height: 500px;
-  /* height: 30vw; */
-  /* padding-right: 80px; */
-  /* padding-top: 40px; */
-}
+
 .main-text {
   margin-top: 40px;
   padding-left: 50px;
@@ -154,7 +149,8 @@ export default {
 }
 #main-section {
   background-image: linear-gradient(to right, #00b09b, #96c93d) !important;
-  min-height: 88vh;
+  min-height: auto;
+  padding: 20px 0 30px 0;
 }
 button,
 button::after {
