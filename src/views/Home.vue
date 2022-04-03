@@ -2,18 +2,20 @@
   <main>
     <!-- Introduction -->
     <section id="main-section" style="background: black">
-      <div class=" grid-cont">
-        <div class="text-white main-text place-self-center">
-          <p class=" main-par font-bold mb-5">{{ $t('home.listen') }}</p>
-          <p class=" txt-desc text-3xl">{{ $t('home.description') }}</p>
+      <div class=" grid-cont h-full pt-8">
+        <div class="text-white md:mt-16  text-center md:text-left  h-full  place-self-center">
+          <p class=" text-4xl md:text-6xl lg:text-7xl  font-bold mb-5">
+            {{ $t("home.listen") }}
+          </p>
+          <p class=" text-xl px-4 sm:text-2xl mb-5 ">{{ $t("home.description") }}</p>
           <router-link :to="{ path: '/', hash: '#songs' }">
             <button class="animate__animated animate__slideInDown break-words">
-              {{ $t('home.button') }}
+              {{ $t("home.button") }}
             </button>
           </router-link>
         </div>
         <img
-          class="main-pic block place-self-center row-span-1"
+          class="  place-self-center h-52 md:h-96 lg:h-96 xl:h-96 3x:h-96 row-span-1"
           src="assets/img/phone.png"
           alt=""
         />
@@ -23,7 +25,7 @@
     <section id="songs">
       <div class=" songs-div  relative text-white flex flex-col">
         <div class=" song-icon">
-          <span class="card-title text-2xl">{{ $t('home.songs') }}</span>
+          <span class="card-title text-2xl">{{ $t("home.songs") }}</span>
           <span
             class="px-6 pt-6 pb-5 font-bold text-2xl inline headset-icon"
             v-icon-secondary="{ icon: 'headphones-alt', right: true }"
@@ -48,33 +50,31 @@
 </template>
 
 <script>
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { songsCollection } from '@/includes/firebase';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import AppSongItem from '@/components/SongItem.vue';
-import IconSecondary from '../directives/icon-secondary';
+import { songsCollection } from "@/includes/firebase";
+import AppSongItem from "@/components/SongItem.vue";
+import IconSecondary from "../directives/icon-secondary";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    AppSongItem,
+    AppSongItem
   },
   directives: {
-    'icon-secondary': IconSecondary,
+    "icon-secondary": IconSecondary
   },
   data() {
     return {
       songs: [],
       maxPerPage: 10,
-      pendingRequest: false,
+      pendingRequest: false
     };
   },
   async created() {
     this.getSongs();
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   },
   beforeUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     async getSongs() {
@@ -87,20 +87,20 @@ export default {
       if (this.songs.length) {
         const lastDoc = await songsCollection.doc(this.songs[this.songs.length - 1].docID).get();
         snapshot = await songsCollection
-          .orderBy('modified_name')
+          .orderBy("modified_name")
           .startAfter(lastDoc)
           .limit(this.maxPerPage)
           .get();
       } else {
         snapshot = await songsCollection
-          .orderBy('modified_name')
+          .orderBy("modified_name")
           .limit(this.maxPerPage)
           .get();
       }
-      snapshot.forEach((document) => {
+      snapshot.forEach(document => {
         this.songs.push({
           docID: document.id,
-          ...document.data(),
+          ...document.data()
         });
       });
       this.pendingRequest = false;
@@ -113,8 +113,8 @@ export default {
       if (bottomOfWindow) {
         this.getSongs();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -179,7 +179,7 @@ button::after {
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'AVAILABLE NOW';
+  content: "AVAILABLE NOW";
   display: block;
   position: absolute;
   top: 0;
@@ -256,9 +256,9 @@ button:hover::after {
   }
 }
 @media screen and (max-width: 768px) {
-  .main-pic {
+  /* .main-pic {
     display: none;
-  }
+  } */
   .grid-cont {
     grid-template-columns: 1fr;
   }
