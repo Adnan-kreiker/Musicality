@@ -2,12 +2,12 @@
   <main>
     <!-- Introduction -->
     <section id="main-section" style="background: black">
-      <div class=" grid-cont h-full pt-8">
-        <div class="text-white md:mt-16  text-center md:text-left  h-full  place-self-center">
-          <p class=" text-4xl md:text-6xl lg:text-7xl  font-bold mb-5">
+      <div class="grid-cont h-full pt-8">
+        <div class="text-white md:mt-16 text-center md:text-left h-full place-self-center">
+          <p class="text-4xl md:text-6xl lg:text-7xl font-bold mb-5">
             {{ $t("home.listen") }}
           </p>
-          <p class=" text-xl px-4 sm:text-2xl mb-5 ">{{ $t("home.description") }}</p>
+          <p class="text-xl px-4 sm:text-2xl mb-5">{{ $t("home.description") }}</p>
           <router-link :to="{ path: '/', hash: '#songs' }">
             <button class="animate__animated animate__slideInDown break-words">
               {{ $t("home.button") }}
@@ -15,16 +15,16 @@
           </router-link>
         </div>
         <img
-          class="  place-self-center h-52 md:h-96 lg:h-[500px] xl:h-[500px] 2xl:h-[500px] row-span-1"
-          src="assets/img/phone.png"
+          class="place-self-center h-52 md:h-96 lg:h-[500px] xl:h-[500px] 2xl:h-[500px] row-span-1"
+          src="/assets/img/phone.png"
           alt=""
         />
       </div>
     </section>
     <!-- Main Content -->
     <section id="songs">
-      <div class=" songs-div  relative text-white flex flex-col">
-        <div class=" song-icon">
+      <div class="songs-div relative text-white flex flex-col">
+        <div class="song-icon">
           <span class="card-title text-2xl">{{ $t("home.songs") }}</span>
           <span
             class="px-6 pt-6 pb-5 font-bold text-2xl inline headset-icon"
@@ -40,7 +40,7 @@
             v-for="song in songs"
             :key="song.docID"
             :song="song"
-            class="  animate__animated animate__slideInLeft animate__slow"
+            class="animate__animated animate__slideInLeft animate__slow"
           />
         </ol>
         <!-- .. end of Playlist -->
@@ -57,16 +57,16 @@ import IconSecondary from "../directives/icon-secondary";
 export default {
   name: "Home",
   components: {
-    AppSongItem
+    AppSongItem,
   },
   directives: {
-    "icon-secondary": IconSecondary
+    "icon-secondary": IconSecondary,
   },
   data() {
     return {
       songs: [],
       maxPerPage: 10,
-      pendingRequest: false
+      pendingRequest: false,
     };
   },
   async created() {
@@ -92,15 +92,12 @@ export default {
           .limit(this.maxPerPage)
           .get();
       } else {
-        snapshot = await songsCollection
-          .orderBy("modified_name")
-          .limit(this.maxPerPage)
-          .get();
+        snapshot = await songsCollection.orderBy("modified_name").limit(this.maxPerPage).get();
       }
-      snapshot.forEach(document => {
+      snapshot.forEach((document) => {
         this.songs.push({
           docID: document.id,
-          ...document.data()
+          ...document.data(),
         });
       });
       this.pendingRequest = false;
@@ -113,8 +110,8 @@ export default {
       if (bottomOfWindow) {
         this.getSongs();
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
