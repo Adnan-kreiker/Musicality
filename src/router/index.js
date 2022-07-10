@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
 
 const Home = () => import('@/views/Home.vue');
-const Song = () => import(/* webpackChunkName: "mu" */ '@/views/Song.vue');
-const Manage = () => import(/* webpackChunkName: "mu" */ '@/views/Manage.vue');
+const Song = () => import( '@/views/Song.vue');
+const Manage = () => import( '@/views/Manage.vue');
 const About = () => import('@/views/About.vue');
 const routes = [
   {
@@ -41,7 +41,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-500',
   scrollBehavior(to, from, savedPosition) {
