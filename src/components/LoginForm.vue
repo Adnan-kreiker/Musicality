@@ -2,13 +2,16 @@
   <main>
     <!-- Login Form -->
     <div
-      class="text-white text-center font-bold p-4 mb-4"
       v-if="login_show_alert"
+      class="text-white text-center font-bold p-4 mb-4"
       :class="login_alert_variant"
     >
       {{ login_alert_message }}
     </div>
-    <vee-form :validation-schema="schema" @submit="login">
+    <vee-form
+      :validation-schema="schema"
+      @submit="login"
+    >
       <!-- Email -->
       <div class="mb-3">
         <label class="inline-block text-white mb-2">Email</label>
@@ -19,7 +22,10 @@
             duration-500 focus:outline-none focus:border-black rounded"
           :placeholder="$t('login.placeholder1')"
         />
-        <ErrorMessage class="text-red-600" name="email" />
+        <ErrorMessage
+          class="text-red-600"
+          name="email"
+        />
       </div>
       <!-- Password -->
       <div class="mb-3">
@@ -31,7 +37,10 @@
             duration-500 focus:outline-none focus:border-black rounded"
           :placeholder="$t('login.password')"
         />
-        <ErrorMessage class="text-red-600" name="password" />
+        <ErrorMessage
+          class="text-red-600"
+          name="password"
+        />
       </div>
       <button
         type="submit"

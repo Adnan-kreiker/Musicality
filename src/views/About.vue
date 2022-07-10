@@ -1,16 +1,20 @@
 <template>
   <div class="main-section grid grid-cols-2">
     <div class="about h-screen  text-white">
-      <p class=" what-is text-white text-base">{{ $t('home.whatIs') }}</p>
-      <br />
-      <p class=" txt-desc text-4xl font-bold">{{ $t('home.homeDesc') }}</p>
+      <p class=" what-is text-white text-base">
+        {{ $t('home.whatIs') }}
+      </p>
+      <br>
+      <p class=" txt-desc text-4xl font-bold">
+        {{ $t('home.homeDesc') }}
+      </p>
     </div>
     <div class=" relative overflow-hidden">
       <img
         class=" block absolute -right-80 animate__animated
      animate__slideInRight"
         src="/assets/img/songs.png"
-      />
+      >
     </div>
   </div>
 </template>

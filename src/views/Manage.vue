@@ -2,20 +2,27 @@
   <section class="container wrapper text-white mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1 wrapper">
-        <app-upload ref="upload" :addSong="addSong" />
+        <app-upload
+          ref="upload"
+          :add-song="addSong"
+        />
       </div>
       <div class="col-span-2 wrapper">
         <div class="divs rounded border border-green-400 relative flex flex-col">
           <div class="px-6 pt-6 pb-5 font-bold border-b border-green-400">
             <span class="card-title">{{ $t('manage.my_songs') }}</span>
-            <i class="fa fa-compact-disc float-right text-green-400 text-2xl"></i>
+            <i class="fa fa-compact-disc float-right text-green-400 text-2xl" />
           </div>
           <div class="p-6">
-           <composition-item v-for="(song, index) in songs" :key="song.docID"
-            :song="song" :updateSong="updateSong"
-            :index="index"
-            :removeSong="removeSong"
-            :updateUnsavedFlag="updateUnsavedFlag"/>
+            <composition-item
+              v-for="(song, index) in songs"
+              :key="song.docID"
+              :song="song"
+              :update-song="updateSong"
+              :index="index"
+              :remove-song="removeSong"
+              :update-unsaved-flag="updateUnsavedFlag"
+            />
           </div>
         </div>
       </div>
@@ -31,15 +38,24 @@ import { songsCollection, auth } from '@/includes/firebase';
 
 export default {
   name: 'Manage',
+  components: {
+    AppUpload,
+    CompositionItem,
+  },
+  beforeRouteLeave(to, from, next) {
+    if (!this.unsavedFlag) {
+      next();
+    } else {
+      // eslint-disable-next-line no-alert, no-restricted-globals
+      const leave = confirm('You have unsaved changes. Are you sure you want to leave?');
+      next(leave);
+    }
+  },
   data() {
     return {
       songs: [],
       unsavedFlag: false,
     };
-  },
-  components: {
-    AppUpload,
-    CompositionItem,
   },
   async created() {
     const snapshot = await songsCollection.where('uid', '==', auth.currentUser.uid).get();
@@ -64,15 +80,6 @@ export default {
     updateUnsavedFlag(value) {
       this.unsavedFlag = value;
     },
-  },
-  beforeRouteLeave(to, from, next) {
-    if (!this.unsavedFlag) {
-      next();
-    } else {
-      // eslint-disable-next-line no-alert, no-restricted-globals
-      const leave = confirm('You have unsaved changes. Are you sure you want to leave?');
-      next(leave);
-    }
   },
   // beforeRouteLeave(to, from, next) {
   //   this.$refs.upload.cancelUploads();

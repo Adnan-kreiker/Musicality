@@ -2,7 +2,7 @@
   <div class="divs rounded border border-green-400 relative flex flex-col">
     <div class="px-6 pt-6 pb-5 font-bold border-b border-green-400">
       <span class="card-title text-white">{{ $t('manage.upload') }}</span>
-      <i class="fas fa-upload float-right text-green-400 text-2xl"></i>
+      <i class="fas fa-upload float-right text-green-400 text-2xl" />
     </div>
     <!-- Upload Dropbox -->
     <div class="p-6">
@@ -19,32 +19,44 @@
         @dragleave.prevent.stop="is_dragover = false"
         @drop.prevent.stop="upload($event)"
       >
-        <h5 class=" text-white">{{ $t('manage.drop') }}</h5>
+        <h5 class=" text-white">
+          {{ $t('manage.drop') }}
+        </h5>
       </div>
-      <label class=" border border-green-500 p-3 cursor-pointer" for="upload-file">{{
+      <label
+        class=" border border-green-500 p-3 cursor-pointer"
+        for="upload-file"
+      >{{
         $t('manage.upload')
       }}</label>
       <input
+        id="upload-file"
         type="file"
         multiple
-        @change="upload($event)"
         name="file"
-        id="upload-file"
         class=" hidden"
-      />
+        @change="upload($event)"
+      >
       <!-- <input type="file" multiple @change="upload($event)" /> -->
-      <hr class="my-6" />
+      <hr class="my-6">
       <!-- Progress Bar -->
-      <div class="mb-4" v-for="upload in uploads" :key="upload.name">
-        <div class="font-bold text-sm" :class="upload.text_class">
-          <i class="upload.icon"></i> {{ upload.name }}
+      <div
+        v-for="upload in uploads"
+        :key="upload.name"
+        class="mb-4"
+      >
+        <div
+          class="font-bold text-sm"
+          :class="upload.text_class"
+        >
+          <i class="upload.icon" /> {{ upload.name }}
         </div>
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
           <div
             class="transition-all progress-bar"
             :class="upload.variant"
             :style="{ width: upload.current_progress + '%' }"
-          ></div>
+          />
         </div>
       </div>
     </div>
@@ -56,13 +68,18 @@ import { storage, auth, songsCollection } from '@/includes/firebase';
 
 export default {
   name: 'Upload',
+  props: ['addSong'],
   data() {
     return {
       is_dragover: false,
       uploads: [],
     };
   },
-  props: ['addSong'],
+  beforeUnmount() {
+    this.uploads.forEach((upload) => {
+      upload.task.cancel();
+    });
+  },
   methods: {
     upload($event) {
       this.is_dragover = false;
@@ -138,11 +155,6 @@ export default {
     //     upload.task.cancel();
     //   });
     // },
-  },
-  beforeUnmount() {
-    this.uploads.forEach((upload) => {
-      upload.task.cancel();
-    });
   },
 };
 </script>

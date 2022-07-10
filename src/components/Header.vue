@@ -7,7 +7,8 @@
         :to="{ name: 'Home' }"
         class="text-white font-bold uppercase text-2xl mr-4"
         exact-active-class="no-change"
-        >Musicality
+      >
+        Musicality
       </router-link>
 
       <div class="flex flex-grow items-center nav-bar">
@@ -15,9 +16,12 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link class="px-2 text-white" :to="{ name: 'About' }">
-              {{ $t('home.about') }}</router-link
+            <router-link
+              class="px-2 text-white"
+              :to="{ name: 'About' }"
             >
+              {{ $t('home.about') }}
+            </router-link>
           </li>
           <!-- <div class="lang">
             <li>
@@ -27,18 +31,28 @@
             </li>
           </div> -->
           <li v-if="!userLoggedIn">
-            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
-              {{ $t('home.loginRegister') }}</a
+            <a
+              class="px-2 text-white"
+              href="#"
+              @click.prevent="toggleAuthModal"
             >
+              {{ $t('home.loginRegister') }}</a>
           </li>
           <template v-else>
             <li>
-              <router-link class="px-2 text-white" :to="{ name: 'Manage' }">
-                {{ $t('home.manage') }}</router-link
+              <router-link
+                class="px-2 text-white"
+                :to="{ name: 'Manage' }"
               >
+                {{ $t('home.manage') }}
+              </router-link>
             </li>
             <li>
-              <a class="px-2 text-white" href="#" @click.prevent="signout">{{
+              <a
+                class="px-2 text-white"
+                href="#"
+                @click.prevent="signout"
+              >{{
                 $t('home.logout')
               }}</a>
             </li>
@@ -46,48 +60,75 @@
         </ul>
         <ul class="flex flex-row mt-1 ml-auto">
           <li>
-            <a class=" text-white" href="#" @click.prevent="changeLocale">
+            <a
+              class=" text-white"
+              href="#"
+              @click.prevent="changeLocale"
+            >
               {{ currentLocale }}
             </a>
           </li>
         </ul>
       </div>
-      <div id="mySidenav" :class="[{ shown: show }, 'hide']" class="sidenav">
+      <div
+        id="mySidenav"
+        :class="[{ shown: show }, 'hide']"
+        class="sidenav"
+      >
         <!-- <a href="javascript:void(0)" class="closebtn" @click="closeNav()">&times;</a> -->
         <ul>
           <!-- Navigation Links -->
           <li>
-            <router-link class="px-2 text-white" :to="{ name: 'About' }">
-              {{ $t('home.about') }}</router-link
+            <router-link
+              class="px-2 text-white"
+              :to="{ name: 'About' }"
             >
+              {{ $t('home.about') }}
+            </router-link>
           </li>
           <li v-if="!userLoggedIn">
-            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
-              {{ $t('home.loginRegister') }}</a
+            <a
+              class="px-2 text-white"
+              href="#"
+              @click.prevent="toggleAuthModal"
             >
+              {{ $t('home.loginRegister') }}</a>
           </li>
           <template v-else>
             <li>
-              <router-link class="px-2 text-white" :to="{ name: 'Manage' }">
-                {{ $t('home.manage') }}</router-link
+              <router-link
+                class="px-2 text-white"
+                :to="{ name: 'Manage' }"
               >
+                {{ $t('home.manage') }}
+              </router-link>
             </li>
             <li>
-              <a class="px-2 text-white" href="#" @click.prevent="signout">{{
+              <a
+                class="px-2 text-white"
+                href="#"
+                @click.prevent="signout"
+              >{{
                 $t('home.logout')
               }}</a>
             </li>
           </template>
           <li>
-            <a class=" text-white" href="#" @click.prevent="changeLocale">
+            <a
+              class=" text-white"
+              href="#"
+              @click.prevent="changeLocale"
+            >
               {{ currentLocale }}
             </a>
           </li>
         </ul>
       </div>
-      <span class="burger hidden" style="font-size:30px;cursor:pointer" @click="openNav()"
-        >&#9776;</span
-      >
+      <span
+        class="burger hidden"
+        style="font-size:30px;cursor:pointer"
+        @click="openNav()"
+      >&#9776;</span>
     </nav>
   </header>
 </template>

@@ -1,32 +1,45 @@
 <template>
-  <main id="player" class=" min-h-screen">
+  <main
+    id="player"
+    class=" min-h-screen"
+  >
     <!-- Music Header -->
-    <section id="musicHeader" class=" mb-8 py-14 text-center text-white relative">
+    <section
+      id="musicHeader"
+      class=" mb-8 py-14 text-center text-white relative"
+    >
       <div class="container mx-auto flex items-center">
         <!-- Play/Pause Button -->
         <button
+          id="play-button"
           type="button"
           class="z-50 h-24  w-24 text-3xl bg-white text-black rounded-full
         focus:outline-none"
-          id="play-button"
           @click.prevent="newSong(song)"
         >
           <i
             class="fa text-gray-500 text-xl"
             :class="{ 'fa-play': !playing, 'fas fa-reply': playing }"
-          ></i>
+          />
           <!-- <i class="fas fa-play"></i> -->
         </button>
         <div class="z-50 text-left ml-8">
           <!-- Song Info -->
-          <div class="text-3xl font-bold">{{ song.modified_name }}</div>
+          <div class="text-3xl font-bold">
+            {{ song.modified_name }}
+          </div>
           <div>{{ song.genre }}</div>
-          <div class="song-price">{{ $n(1, 'currency') }}</div>
+          <div class="song-price">
+            {{ $n(1, 'currency') }}
+          </div>
         </div>
       </div>
     </section>
     <!-- Form -->
-    <section class="container mx-auto mt-6" id="comments">
+    <section
+      id="comments"
+      class="container mx-auto mt-6"
+    >
       <div class=" comments-section rounded relative flex flex-col">
         <div class="px-6 pt-6 pb-5 font-bold border-b border-green-400">
           <!-- Comment Count -->
@@ -35,36 +48,46 @@
               $tc('song.comment_count', song.comment_count, {
                 count: song.comment_count,
               })
-            }}</span
-          >
+            }}</span>
           <select
+            v-model="sort"
             class=" mt-4 py-1.5 inline text-white comments-section border border-green-500
             bg-gray-700
           "
-            v-model="sort"
           >
-            <option value="1"> {{ $t('song.sort1') }}</option>
-            <option value="2">{{ $t('song.sort2') }}</option>
+            <option value="1">
+              {{ $t('song.sort1') }}
+            </option>
+            <option value="2">
+              {{ $t('song.sort2') }}
+            </option>
           </select>
-          <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
+          <i class="fa fa-comments float-right text-green-400 text-2xl" />
         </div>
         <div class="p-6">
           <div
-            class="text-white text-center font-bold p-4 mb-4"
             v-if="comment_show_alert"
+            class="text-white text-center font-bold p-4 mb-4"
             :class="comment_alert_variant"
           >
             {{ comment_alert_message }}
           </div>
-          <vee-form :validation-schema="schema" @submit="addComment" v-if="userLoggedIn">
+          <vee-form
+            v-if="userLoggedIn"
+            :validation-schema="schema"
+            @submit="addComment"
+          >
             <vee-field
               as="textarea"
               name="comment"
               class="block w-full py-1.5 px-3 text-gray-800 transition
               duration-500 focus:outline-none focus:border-black rounded mb-4"
               placeholder="Your comment here..."
-            ></vee-field>
-            <ErrorMessage class="text-red-600 block" name="comment" />
+            />
+            <ErrorMessage
+              class="text-red-600 block"
+              name="comment"
+            />
             <button
               :disabled="comment_in_submission"
               type="submit"
@@ -78,10 +101,16 @@
     </section>
     <!-- Comments -->
     <ul class="container mx-auto">
-      <li class=" p-3  mt-3 single-comment" v-for="comment in sortedComments" :key="comment.docID">
+      <li
+        v-for="comment in sortedComments"
+        :key="comment.docID"
+        class=" p-3  mt-3 single-comment"
+      >
         <!-- Comment Author -->
         <div class="mb-5">
-          <div class="font-bold">{{ comment.name }}</div>
+          <div class="font-bold">
+            {{ comment.name }}
+          </div>
           <time>{{ comment.datePosted }}</time>
         </div>
 
@@ -98,21 +127,6 @@ import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Song',
-  data() {
-    return {
-      song: {},
-      schema: {
-        comment: 'required|min:3',
-      },
-      comment_in_submission: false,
-      comment_show_alert: false,
-      comment_alert_variant: 'bg-blue-500',
-      comment_alert_message: 'Please wait! Your comment is being submitted',
-      logged: false,
-      comments: [],
-      sort: '1',
-    };
-  },
   async beforeRouteEnter(to, from, next) {
     const docSnapshot = await songsCollection.doc(to.params.id).get();
 
@@ -128,6 +142,21 @@ export default {
       vm.song = docSnapshot.data();
       vm.getComments();
     });
+  },
+  data() {
+    return {
+      song: {},
+      schema: {
+        comment: 'required|min:3',
+      },
+      comment_in_submission: false,
+      comment_show_alert: false,
+      comment_alert_variant: 'bg-blue-500',
+      comment_alert_message: 'Please wait! Your comment is being submitted',
+      logged: false,
+      comments: [],
+      sort: '1',
+    };
   },
   methods: {
     ...mapActions(['newSong']),

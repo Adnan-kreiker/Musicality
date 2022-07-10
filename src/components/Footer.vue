@@ -1,12 +1,16 @@
 <template>
   <footer class="footer grid grid-cols-3 content-center justify-center gap-2">
     <div class="footer__addr col-span-3">
-      <h1 class="footer__logo">Musicality</h1>
+      <h1 class="footer__logo">
+        Musicality
+      </h1>
     </div>
 
     <!-- <ul class="footer__nav block "> -->
     <li class="nav__item">
-      <h2 class="nav__title">{{ $t('footer.Media') }}</h2>
+      <h2 class="nav__title">
+        {{ $t('footer.Media') }}
+      </h2>
 
       <ul class="nav__ul">
         <li>
@@ -24,7 +28,9 @@
     </li>
 
     <li class="nav__item nav__item--extra">
-      <h2 class="nav__title">{{ $t('footer.Company') }}</h2>
+      <h2 class="nav__title">
+        {{ $t('footer.Company') }}
+      </h2>
 
       <ul class="nav__ul">
         <li>
@@ -46,7 +52,9 @@
     </li>
 
     <li class="nav__item">
-      <h2 class="nav__title">{{ $t('footer.Account') }}</h2>
+      <h2 class="nav__title">
+        {{ $t('footer.Account') }}
+      </h2>
 
       <ul class="nav__ul">
         <li>

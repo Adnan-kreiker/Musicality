@@ -7,11 +7,15 @@
     <div class="relative">
       <!-- Play/Pause Button -->
       <div class="float-left w-7 h-7 leading-3">
-        <button type="button" @click.prevent="toggleAudio" id="player-play-button">
+        <button
+          id="player-play-button"
+          type="button"
+          @click.prevent="toggleAudio"
+        >
           <i
             class="fa text-green-500 text-xl"
             :class="{ 'fa-play': !playing, 'fa-pause': playing }"
-          ></i>
+          />
         </button>
       </div>
       <!-- Current Position -->
@@ -21,8 +25,8 @@
       <!-- Scrub -->
       <div class="float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
         <div
-          class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info"
           v-if="currentSong.modified_name"
+          class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info"
         >
           <span class="song-title">{{ currentSong.modified_name }}</span> by
           <span class="song-artist">{{ currentSong.display_name }}</span>
@@ -32,14 +36,17 @@
           @click.prevent="updateSeek"
         >
           <!-- Player Ball -->
-          <span class="absolute top-neg-8 text-gray-800 text-lg" :style="{ left: playerProgress }">
-            <i class="fas fa-circle"></i>
+          <span
+            class="absolute top-neg-8 text-gray-800 text-lg"
+            :style="{ left: playerProgress }"
+          >
+            <i class="fas fa-circle" />
           </span>
           <!-- Player Progress Bar -->
           <span
             class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
             :style="{ width: playerProgress }"
-          ></span>
+          />
         </span>
       </div>
       <!-- Duration -->

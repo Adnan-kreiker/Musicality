@@ -2,13 +2,17 @@
   <main>
     <!-- Registration Form -->
     <div
-      class="text-white text-center font-bold p-5 mb-4"
       v-if="reg_show_alert"
+      class="text-white text-center font-bold p-5 mb-4"
       :class="reg_alert_variant"
     >
       {{ reg_alert_message }}
     </div>
-    <vee-form :validation-schema="schema" @submit="register" :initial-values="userData">
+    <vee-form
+      :validation-schema="schema"
+      :initial-values="userData"
+      @submit="register"
+    >
       <!-- Name -->
       <div class="mb-3">
         <label class="inline-block text-white mb-2">{{ $t('login.name') }}</label>
@@ -19,7 +23,10 @@
             duration-500 focus:outline-none focus:border-black rounded"
           placeholder="Enter Name"
         />
-        <ErrorMessage class="text-red-600" name="name" />
+        <ErrorMessage
+          class="text-red-600"
+          name="name"
+        />
       </div>
       <!-- Email -->
       <div class="mb-3">
@@ -31,7 +38,10 @@
             duration-500 focus:outline-none focus:border-black rounded"
           placeholder="Enter Email"
         />
-        <ErrorMessage name="email" class="text-red-600" />
+        <ErrorMessage
+          name="email"
+          class="text-red-600"
+        />
       </div>
       <!-- Age -->
       <div class="mb-3">
@@ -42,12 +52,19 @@
           class="block w-full py-1.5 px-3 text-white border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded"
         />
-        <ErrorMessage class="text-red-600" name="age" />
+        <ErrorMessage
+          class="text-red-600"
+          name="age"
+        />
       </div>
       <!-- Password -->
       <div class="mb-3">
         <label class="inline-block text-white mb-2">{{ $t('login.password') }}</label>
-        <vee-field name="password" :bails="false" v-slot="{ field, errors }">
+        <vee-field
+          v-slot="{ field, errors }"
+          name="password"
+          :bails="false"
+        >
           <input
             class="block w-full py-1.5 px-3 text-white border
             border-gray-300 transition duration-500 focus:outline-none
@@ -55,8 +72,12 @@
             type="password"
             placeholder="Password"
             v-bind="field"
-          />
-          <div class="text-red-600" v-for="error in errors" :key="error">
+          >
+          <div
+            v-for="error in errors"
+            :key="error"
+            class="text-red-600"
+          >
             <p>{{ error }}</p>
           </div>
         </vee-field>
@@ -71,7 +92,10 @@
             duration-500 focus:outline-none focus:border-black rounded"
           placeholder="Confirm Password"
         />
-        <ErrorMessage name="confirm_password" class="text-red-600" />
+        <ErrorMessage
+          name="confirm_password"
+          class="text-red-600"
+        />
       </div>
       <!-- Country -->
       <div class="mb-3">
@@ -82,12 +106,23 @@
           class="block w-full py-1.5 px-3 text-white border border-gray-300 transition
             duration-500 focus:outline-none focus:border-black rounded"
         >
-          <option value="USA">USA</option>
-          <option value="Mexico">Mexico</option>
-          <option value="Germany">Germany</option>
-          <option value="Antarctica">Antarctica</option>
+          <option value="USA">
+            USA
+          </option>
+          <option value="Mexico">
+            Mexico
+          </option>
+          <option value="Germany">
+            Germany
+          </option>
+          <option value="Antarctica">
+            Antarctica
+          </option>
         </vee-field>
-        <ErrorMessage name="country" class="text-red-600" />
+        <ErrorMessage
+          name="country"
+          class="text-red-600"
+        />
       </div>
       <!-- TOS -->
       <div class="mb-3 pl-6">
@@ -97,10 +132,21 @@
           type="checkbox"
           class="w-4 h-4 float-left -ml-6 mt-1 rounded"
         />
-        <i18n-t class="inline-block text-white" keypath="register.accept" tag="label" for="tos">
-          <a href="#" class=" text-white"> {{ $t('register.TOS') }}</a>
+        <i18n-t
+          class="inline-block text-white"
+          keypath="register.accept"
+          tag="label"
+          for="tos"
+        >
+          <a
+            href="#"
+            class=" text-white"
+          > {{ $t('register.TOS') }}</a>
         </i18n-t>
-        <ErrorMessage name="tos" class="text-red-600" />
+        <ErrorMessage
+          name="tos"
+          class="text-red-600"
+        />
       </div>
       <button
         type="submit"

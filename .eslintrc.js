@@ -5,7 +5,8 @@ module.exports = {
     jest: true
   },
   extends: [
-    "plugin:vue/vue3-essential"
+    "plugin:vue/vue3-essential",
+    'plugin:vue/vue3-recommended',
     // '@vue/airbnb',
   ],
   rules: {

@@ -1,13 +1,18 @@
 <template>
   <main>
     <!-- Introduction -->
-    <section id="main-section" style="background: black">
+    <section
+      id="main-section"
+      style="background: black"
+    >
       <div class="grid-cont h-full pt-8">
         <div class="text-white md:mt-16 text-center md:text-left h-full place-self-center">
           <p class="text-4xl md:text-6xl lg:text-7xl font-bold mb-5">
             {{ $t("home.listen") }}
           </p>
-          <p class="text-xl px-4 sm:text-2xl mb-5">{{ $t("home.description") }}</p>
+          <p class="text-xl px-4 sm:text-2xl mb-5">
+            {{ $t("home.description") }}
+          </p>
           <router-link :to="{ path: '/', hash: '#songs' }">
             <button class="animate__animated animate__slideInDown break-words">
               {{ $t("home.button") }}
@@ -18,7 +23,7 @@
           class="place-self-center h-52 md:h-96 lg:h-[500px] xl:h-[500px] 2xl:h-[500px] row-span-1"
           src="/assets/img/phone.png"
           alt=""
-        />
+        >
       </div>
     </section>
     <!-- Main Content -->
@@ -27,9 +32,9 @@
         <div class="song-icon">
           <span class="card-title text-2xl">{{ $t("home.songs") }}</span>
           <span
-            class="px-6 pt-6 pb-5 font-bold text-2xl inline headset-icon"
             v-icon-secondary="{ icon: 'headphones-alt', right: true }"
-          ></span>
+            class="px-6 pt-6 pb-5 font-bold text-2xl inline headset-icon"
+          />
         </div>
 
         <!-- <p  class="card-title">{{ $t('home.songs')}}</p> -->
