@@ -5,22 +5,29 @@
       id="main-section"
       style="background: black"
     >
-      <div class="grid-cont h-full pt-8">
-        <div class="text-white md:mt-16 text-center md:text-left h-full place-self-center">
+      <div class="flex h-full justify-around items-center">
+        <div class="text-white text-left h-full flex flex-col gap-3 px-4">
           <p class="text-4xl md:text-6xl lg:text-7xl font-bold mb-5">
             {{ $t("home.listen") }}
           </p>
-          <p class="text-xl px-4 sm:text-2xl mb-5">
+          <p class="text-xl md:text-2xl mb-5 max-w-[600px]">
             {{ $t("home.description") }}
           </p>
-          <router-link :to="{ path: '/', hash: '#songs' }">
-            <button class="animate__animated animate__slideInDown break-words">
+          <router-link
+            v-slot="{navigate}"
+            :to="{ path: '/', hash: '#songs' }"
+            custom
+          >
+            <button
+              class="animate__animated animate__slideInDown break-words"
+              @click="navigate"
+            >
               {{ $t("home.button") }}
             </button>
           </router-link>
         </div>
         <img
-          class="place-self-center h-52 md:h-96 lg:h-[500px] xl:h-[500px] 2xl:h-[500px] row-span-1"
+          class="place-self-center h-52 md:h-96 lg:h-[550px] row-span-1"
           src="/assets/img/phone.png"
           alt=""
         >
@@ -121,12 +128,6 @@ export default {
 </script>
 
 <style scoped>
-.grid-cont {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 55% 40%;
-}
-
 .main-text {
   margin-top: 40px;
   padding-left: 50px;
@@ -157,8 +158,9 @@ export default {
 button,
 button::after {
   width: 25vw;
-  /* margin-left: 10px; */
   height: 6vw;
+  max-width: 400px;
+  max-height: 100px;
   font-size: clamp(1rem, 2vw, 2rem);
   background: linear-gradient(45deg, transparent 5%, #6b2b4a 5%);
   border: 0;
@@ -276,9 +278,7 @@ button:hover::after {
     font-size: 1.5rem;
     line-height: 1.3;
   }
-  button {
-    margin-left: 13px !important;
-  }
+
 }
 @media screen and (max-width: 589px) {
   .main-text {
