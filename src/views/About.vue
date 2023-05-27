@@ -1,17 +1,17 @@
 <template>
-  <div class="main-section grid grid-cols-2">
-    <div class="about h-screen  text-white">
-      <p class=" what-is text-white text-base">
+  <div class="main-section h-screen grid grid-cols-2">
+    <div class="about text-white mt-[8vw]">
+      <p class=" what-is text-4xl text-white">
         {{ $t('home.whatIs') }}
       </p>
       <br>
-      <p class=" txt-desc text-4xl font-bold">
-        {{ $t('home.homeDesc') }}
+      <p class="description-text">
+        {{ $t('home.descriptionAbout') }}
       </p>
     </div>
     <div class=" relative overflow-hidden">
       <img
-        class=" block absolute -right-80 animate__animated
+        class=" block absolute -right-80 top-[10%] animate__animated
      animate__slideInRight"
         src="/assets/img/songs.png"
       >
@@ -26,7 +26,6 @@ img {
   right: -150px;
 }
 .about {
-  margin-top: 40px;
   margin-left: 100px;
 }
 
@@ -35,6 +34,11 @@ img {
   background-size: 100% 100%;
   /* animation: gradient 3s ease infinite; */
 }
+
+.description-text {
+    line-height: 1.3;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+  }
 
 @keyframes gradient {
   0% {
@@ -59,10 +63,7 @@ img {
     font-size: 1.5rem;
     text-align: left !important;
   }
-  .txt-desc {
-    line-height: 1.3;
-    text-shadow: 1px 1px 0px #000000;
-  }
+
   .main-section {
     padding-top: 40px;
     height: 70vh;
