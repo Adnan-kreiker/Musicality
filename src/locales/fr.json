@@ -8,8 +8,8 @@
     "manage": "Gérer",
     "logout": "Se déconnecter",
     "loginRegister": "Connexion / S'inscrire",
-    "homeDesc": "Musicality est une plateforme de partage de musique rassemblant les gens à travers une expérience unique et une expérience incroyable",
-    "whatIs": "Qu'est-ce que la musicalité ?"
+    "whatIs": "Qu'est-ce que la musicalité ?",
+    "descriptionAbout": "Plongez dans un monde de mélodies, de rythmes et d'harmonies en vous lançant dans un voyage musical hors du commun. \nDécouvrez une vaste collection de chansons couvrant différents genres, des classiques intemporels aux tubes les plus populaires d'aujourd'hui. Notre plateforme conviviale vous permet de naviguer facilement à travers notre catalogue étendu, d'explorer de nouveaux artistes et de créer des playlists personnalisées qui correspondent à votre goût unique."
   },
   "manage": {
     "my_songs": "Mes chansons",
